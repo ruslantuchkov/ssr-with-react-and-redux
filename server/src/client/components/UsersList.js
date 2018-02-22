@@ -24,6 +24,10 @@ class UsersList extends Component {
   }
 }
 
+export function loadData(store) {
+  return store.dispatch(fetchUsers());
+}
+
 export default connect(
   mapStateToProps,
   {fetchUsers}
