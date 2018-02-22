@@ -4,16 +4,11 @@ const baseConfig = require('./webpack.base.js');
 const webpackNodeExternals = require('webpack-node-externals');
 
 const config = {
-  // Inform webpack that we're building a bundle
-  // for nodeJS, rather than for the browser
-  target: 'node',
-  entry: './src/index.js',
+  entry: './src/client/index.js',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'build')
+    path: path.resolve(__dirname, 'public')
   },
-
-  externals: [webpackNodeExternals()]
 };
 
 module.exports = merge(baseConfig, config);
