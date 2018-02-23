@@ -19,6 +19,9 @@ export default (req, store) => {
       <head></head>
       <body>
         <div id='reactRoot'>${content}</div>
+        <script>
+          window.INITIAL_STATE = ${JSON.stringify(store.getState())}
+        </script>
         <script src='bundle.js'></script>
       </body>
     </html>
