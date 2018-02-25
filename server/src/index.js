@@ -25,6 +25,8 @@ app.get('*', (req, res) => {
       return new Promise((resolve, reject) => {
         promise.then(resolve).catch(resolve);
       });
+      // оборачиваем все промисы из loadData в промисы, которые всегда resolve, 
+      //чтобы Promise.all не делал reject до загрузки всех данных в store и рендерил app, не зависимо от наличия ошибок загрузки
     }
   });
   
@@ -33,10 +35,10 @@ app.get('*', (req, res) => {
     const content = renderer(req, store, context);
     if (context.url) {
       return res.redirect(301, context.url);
-    }
+    }// если был рендер <Redirect>
     if (context.notFound) {
       res.status(404);
-    }
+    }//если был рендер <NotFoundPage>
     res.send(content);
   });
 })
